@@ -1,0 +1,13 @@
+Name: user-api
+Host: 0.0.0.0
+Port: 48888
+DataSource: root:root@tcp(192.168.0.63:3306)/zero?charset=utf8&parseTime=true
+Cache:
+  - Host: 127.0.0.1:6379
+Log:
+  Model: console
+Rpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: userservice.rpc

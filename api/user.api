@@ -1,0 +1,50 @@
+syntax = "v1"
+
+info(
+	title: "用户信息"
+	desc: "用户相关信息及行为"
+	author: "nanshan"
+	email: "wangchunjie@bbcl.com"
+	version: "v1.0"
+)
+type HttpResponse {
+	Code int         `json:"code"`
+	Msg  string      `json:"msg"`
+	Data interface{} `json:"data"`
+}
+
+type (
+	RegisterReq {
+		UserName string `form:"username"`
+		Pwd      string `form:"pwd"`
+		NickName string `form:"nickname"`
+		Age      int    `form:"age"`
+	}
+	RegisterRsp {
+		Rid int `json:"rid"`
+	}
+)
+
+type (
+	InfoReq {
+		Rid int `form:"rid"`
+	}
+	InfoRsp {
+		Rid      int    `json:"rid"`
+		UserName string `json:"username"`
+		Pwd      string `json:"pwd"`
+		NickName string `json:"nickname"`
+		Age      int    `json:"age"`
+	}
+)
+
+// 用户相关api
+service user-api{
+	@doc "用户注册"
+	@handler register
+	post /register (RegisterReq) returns (HttpResponse)
+	
+	@doc "获取用户信息"
+	@handler userinfo
+	get /userinfo (InfoReq) returns (HttpResponse)
+}
