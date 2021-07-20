@@ -1,0 +1,11 @@
+Name: userservice.rpc
+ListenOn: 127.0.0.1:48080
+Etcd:
+  Hosts:
+    - 127.0.0.1:2379
+  Key: userservice.rpc
+DataSource: zmwb:realize2012@tcp(127.0.0.1:3306)/zero
+Cache:
+  - Host: 127.0.0.1:6379
+Log:
+  Model: console

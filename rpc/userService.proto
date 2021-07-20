@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package userService;
+
+
+message RegisterRequest {
+  string username = 1;
+  string nickname = 2;
+  string pwd = 3;
+  int64  age = 4;
+}
+
+message RegisterResponse {
+  int64 rid = 1;
+}
+
+service UserService {
+  //注册
+  rpc Register (RegisterRequest) returns (RegisterResponse);
+
+}
